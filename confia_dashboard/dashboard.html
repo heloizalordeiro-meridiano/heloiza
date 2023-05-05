@@ -1,0 +1,42 @@
+﻿<script src="./js/dashboard.js?v=<?php echo $versao?>"></script>
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <table id="col-0">
+            </table>
+        </div>
+        <div class="col-0" id="col-center">
+        </div>
+        <div class="col">
+            <table id="col-1">
+
+            </table>
+        </div>
+    </div>
+</div>
+
+<div class="footer">CONFIA v1.0 | <a href="#" onclick="termoUso();">Termos de Uso</a> | v1.0.5436</div>
+
+<div class="modal " id="modal-mestre">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <label for=""><span id="modal-title"></span></label>
+                <div id="modal-body"></div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal" onclick="$('#modal-mestre').hide();">Ok</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function termoUso(){
+        $('#modal-title').html('Termos de Uso');
+        $('#modal-body').load('termos_uso.html');
+        $('#modal-mestre').show();
+    }   
+</script>
+

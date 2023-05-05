@@ -1,0 +1,87 @@
+﻿<div class="card aniversariantes">
+    <div class="card shadow-sm p-2">
+        <div class="card-title">
+            <label for="" id="card-titulo">Aniversariantes do Mês</label>
+            <span id="control-icon-base">
+                <span class="glyphicon glyphicon-collapse-up collapse-icon" id="collapse-icon"></span>
+                <span class="glyphicon glyphicon-remove-circle close-icon" id="close-icon"></span>
+            </span>
+        </div>
+        <div class="card-text">
+            <table>
+                <tr>
+                    <td>
+                        <table id="table-aniversariantes-left" class=" table-striped">
+                            <thead>
+                                <tr>
+                                    <td class="alLeft">Dia</td>
+                                    <td class="alLeft">Nome</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </td>
+                    <td>&nbsp;</td>
+                    <td>
+                        <table id="table-aniversariantes-rigth" class=" table-striped">
+                            <thead>
+                                <tr>
+                                    <td class="alLeft">Dia</td>
+                                    <td class="alLeft">Nome</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        var table_left = $('#table-aniversariantes-left>tbody');
+        table_left.empty();
+        var table_rigth = $('#table-aniversariantes-rigth>tbody');
+        table_rigth.empty();
+	var codigo = 0;
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: './src/enviaDados.php',
+            data: {
+                url: 'ColaboradoresAniversariantes',
+            	dados: JSON.stringify({ codigo })
+            },
+            async: false,
+            success: function (result) {
+                var count = 0;
+                result.map((item) => {
+                    count++;
+                    var dt = new Date();                    
+                    var hoje = ('0'+dt.getUTCDate()).slice(-2);                    
+                    if (item.DIA === hoje) {
+                        var marca = 'style="font-weight: bold; color: blue;"';
+                    }
+                    if (count <= result.length / 2) {
+                        table = table_left;
+                    } else {
+                        table = table_rigth;
+                    }
+                    table.append(
+                        '<tr '+marca+'>' +
+                        '    <td><strong>' + item.DIA + '</strong></td>' +
+                        '    <td>' + item.NOME + '</td>' +
+                        '</tr>');
+
+                })
+
+            },
+	    error:function(data){console.log(data)}
+        });
+    })
+</script>

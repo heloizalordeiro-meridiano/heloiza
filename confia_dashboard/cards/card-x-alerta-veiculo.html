@@ -1,0 +1,60 @@
+<style>
+    .red {
+        color: red;
+    }
+</style>
+<div class="card alerta-veiculo" style="display: none;">
+    <div class="card shadow-sm p-2">
+        <div class="card-title">
+            <label for="" id="card-titulo">Alerta Veículo</label>
+            <span id="control-icon-base">
+                <span class="glyphicon glyphicon-collapse-up collapse-icon" id="collapse-icon"></span>
+                <span class="glyphicon glyphicon-remove-circle close-icon" id="close-icon"></span>
+            </span>
+        </div>
+        <div class="card-text">
+            <span id="card-body">Os veículos abaixo estão com pendência(s):
+                <table class="table compact row-border stripe" style="width:100%" id="tabela-alerta-veiculo">
+                    <tbody>                       
+                    </tbody>
+                </table>
+            </span>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function() {       
+        var codigo = getURLParam('codigo');
+        var table_altera_veiculo = $('#tabela-alerta-veiculo>tbody');
+        table_altera_veiculo.empty();
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: './src/enviaDados.php',
+            data: {
+                url: 'ColaboradoresAlertaVeiculos',
+                dados: JSON.stringify({ codigo })
+            },
+            async: true,
+            success: function (result) {               
+                if (result.length == undefined){
+                   
+                } else
+                {
+                result.map((item) => {
+                    $('.alerta-veiculo').show();
+                    table_altera_veiculo.append(
+                        ' <tr> '+
+                        ' <td> <span class="glyphicon glyphicon-certificate red"></span> <span '+
+                        '  style="font-weight: bold;">'+item.MODELO+' - '+item.PLACA_VEICULO+'</span> - KM Atual: '+
+                        '  '+item.KM_ATUAL+'<br>Serviço: '+item.SERVICO_DESC+' '+
+                        '   / Última troca: '+item.ULTIMO_KM+' '+
+                        '  </td> '+
+                        '  </tr>'                        
+                    );
+               })}
+            }
+
+        })
+    })
+</script>

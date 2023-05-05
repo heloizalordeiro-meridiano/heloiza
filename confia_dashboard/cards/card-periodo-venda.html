@@ -1,0 +1,56 @@
+﻿<div class="card periodo-venda">
+    <div class="card shadow-sm p-2">
+        <div class="card-title">
+            Períodos de Venda
+            <span id="control-icon-base">
+                <span class="glyphicon glyphicon-collapse-up collapse-icon" id="collapse-icon"></span>
+                <span class="glyphicon glyphicon-remove-circle close-icon" id="close-icon"></span>
+            </span>
+        </div>
+        <div class="card-text">
+            <table border="0" id="tb-periodo-venda" class=" table-striped">
+                <thead>
+                    <td>Mès</td>
+                    <td>Inicial</td>
+                    <td>Final</td>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        var table = $('#tb-periodo-venda>tbody');
+        table.empty();
+	var codigo = 0;
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            url: './src/enviaDados.php',
+            data: {
+                url: 'PeriodoVendaLista',
+            	dados: JSON.stringify({ codigo })
+            },
+            async: false,
+            success: function (result) {
+                result.map((item) => {  
+                    var dt = new Date();
+                    var mes = ('0'+(dt.getMonth()+1)).slice(-2);
+                    var ano = dt.getFullYear();
+                    var mes_ano = mes+'/'+ano; 
+                    if (item.CODIGO_AC_CONTROLE === mes_ano) {
+                        var marca = 'style="font-weight: bold; color: blue;"';
+                    }
+                    table.append(
+                        '<tr ' + marca + '>' +
+                        '    <td>' + item.CODIGO_AC_CONTROLE + '</td>' +
+                        '    <td>' + item.DATA_INICIO + '</td>' +
+                        '    <td>' + item.DATA_FIM + '</td>' +
+                        '</tr>');
+                })
+            }
+        });
+    })
+</script>

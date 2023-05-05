@@ -1,0 +1,55 @@
+<style>
+
+.btn-custom {
+  background-color:#C0C0C0; 
+  font-weight: bold;  
+}
+
+.btn-custom:hover {
+  background-color: #A9A9A9; 
+}
+
+</style>
+
+<div class="card chamados " hidden>
+    <div class="card shadow-sm p-2">
+        <div class="card-title">
+            Lista de Atendimentos
+            <span id="control-icon-base">
+                <span class="glyphicon glyphicon-collapse-up collapse-icon" id="collapse-icon"></span>
+                <span class="glyphicon glyphicon-remove-circle close-icon" id="close-icon"></span>
+
+            </span>
+        </div>
+        <div class="card-text">
+
+            <table border="0" class="compact row-border stripe table-hover" style="width:100%" id="chamados">
+                <thead>
+                    <tr>
+                        <td class="alLeft">Código</td>
+                        <td class="alLeft">Data</td>
+                        <td class="alLeft">Hora</td>
+                        <td class="alLeft">Descrição</td>
+                        <td class="alLeft">Situação</td>
+
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            
+            <div class=" container-fluid d-grid gap-2 d-flex justify-content-between mt-2">
+            <button class="btn btn-info btn-sm rounded-pill" type="button" id="btn-novochamado"> Novo Atend (+) </button>
+            <button class="btn btn-custom btn-sm rounded-pill" type="button" id="btn-aberto"  style="color: red;"> Abertos</button>
+            <button class="btn btn-custom btn-sm rounded-pill"  type="button" id="btn-fechado"  style="color: green;"> Fechados</button>
+            <button class="btn btn-custom btn-sm rounded-pill" type="button" id="btn-andamento"  style="color: blue;"> Andamento</button> 
+            <button class="btn btn-custom btn-sm rounded-pill" type="button" id="btn-todos" > Todos</button>        
+
+            </div> 
+        </div>
+    </div>
+</div>
+
+</div>
+
+ <script src='./js/listachamados.js'></script>

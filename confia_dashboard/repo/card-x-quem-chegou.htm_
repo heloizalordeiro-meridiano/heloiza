@@ -1,0 +1,22 @@
+<div class="card quem-chegou">
+    <div class="card shadow-sm p-2">
+        <div class="card-title">
+            Quem chegou!?
+            <span id="control-icon-base">
+                <span class="glyphicon glyphicon-collapse-up collapse-icon" id="collapse-icon-quem-chegou"></span>
+                <span class="glyphicon glyphicon-remove-circle close-icon" id="close-icon-quem-chegou"></span>
+            </span>        </div>
+        <div class="card-text"  style="text-align: center;">
+            <img src="./img/perfil.jpg" class="rounded-circle" alt="" id="qc-img"><br>
+            <span id="qc-nome"></span><br>
+            SETOR: <span id="qc-setor"></span>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function(){
+        $('#qc-img').attr('src','');
+        $('#qc-nome').html('...');
+        $('#qc-setor').html('...');
+    })
+</script>

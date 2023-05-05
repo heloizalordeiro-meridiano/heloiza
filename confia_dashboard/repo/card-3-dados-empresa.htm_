@@ -1,0 +1,25 @@
+<div class="card" id="empresa">
+    <div class="card shadow-sm p-2">
+        <div class="card-title ">
+            Dados da Empresa
+        </div>
+        <div class="card-text">
+            <strong id="nome-empresa">Café Meridiano Ind. e Com. Ltda - Matriz (1)</strong> <br>
+            Vencimento Certificado Digital: <span id="vencimento-certificado"></span><br>
+            CNPJ: <span id="cnpj-empresa"></span> - I.E.: <span id="ie-empresa"></span><br>
+            Dias bloqueio operações, títulos em atraso: <span id='dias-atraso-empresa'></span><br>
+            Tabela de Preços: <span id='tabela-preco-empresa'></span>
+        </div>
+    </div>
+</div>
+<script>carregaControlIcons('empresa');</script>
+<script>
+    $(document).ready(function(){
+        $('#nome-empresa').html('...');
+        $('#vencimento-certificado').html('...');
+        $('#cnpj-empresa').html('...');
+        $('#ie-empresa').html('...');
+        $('#dias-atraso-empresa').html('...');
+        $('#tabela-preco-empresa').html('...');
+    })
+</script>

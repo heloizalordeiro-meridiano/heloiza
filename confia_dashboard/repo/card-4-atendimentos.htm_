@@ -1,0 +1,47 @@
+<div class="card atendimentos">
+    <div class="card shadow-sm p-2">
+        <div class="card-title ">
+            <strong>Atendimentos (1)</strong>
+            <span id="control-icon-base">
+                <span class="glyphicon glyphicon-collapse-up collapse-icon" id="collapse-icon-atendimentos"></span>
+                <span class="glyphicon glyphicon-remove-circle close-icon" id="close-icon-atendimentos"></span>
+            </span>
+        </div>
+        <div class="card-text">
+            <table class="table table-condensed" id="tabela-atendimentos">
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Data</th>
+                        <th>Descricao</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>CM_AT003298</td>
+                        <td>12/12/21</td>
+                        <td>Favor alterar...</td>
+                        <td>Fechado</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+<script>carregaControlIcons('atendimentos')</script>
+<script>
+    $(document).ready(function () {
+        var table = $('#tabela-atendimentos>tbody');
+        table.empty();
+        table.append(
+            '<tr>'+
+            '    <td>CM_AT003298</td>'+
+            '    <td>12/12/21</td>'+
+            '    <td>Favor alterar...</td>'+
+            '    <td>Fechado</td>'+
+            '</tr>'
+        )
+    })
+</script>

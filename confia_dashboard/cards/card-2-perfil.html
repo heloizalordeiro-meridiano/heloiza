@@ -1,0 +1,26 @@
+<style>
+    .img-perfil {       
+        position: absolute;
+        right: 8px;
+        top: 25px;
+        width: 50px;
+    }
+</style>
+<div class="card" id="perfil-usuario">
+    <div class="card shadow-sm p-2">
+        <div class="card-title">
+            Perfil do Usuário
+        </div>
+        <div class="card-text">
+            <strong id="nome-usuario"></strong><br>
+            Validade Senha: <span id="vencimento-senha"></span>
+            <button class="btn glyphicon glyphicon-refresh btn-xs"
+                alt="Atualizar senha" onclick="alert('Altera senha');" hidden></button><br>
+            Email: <span id="email-usuario"></span>
+            <img src="./img/perfil.jpg" class="img-perfil" >
+        </div>
+
+    </div>
+</div>
+<script src='./js/perfil.js'></script>
+<script>carregaControlIcons('perfil-usuario')</script>
